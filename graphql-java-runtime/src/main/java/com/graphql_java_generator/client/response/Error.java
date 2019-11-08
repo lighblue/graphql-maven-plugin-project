@@ -3,8 +3,6 @@ package com.graphql_java_generator.client.response;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.apache.logging.log4j.Logger;
-
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**

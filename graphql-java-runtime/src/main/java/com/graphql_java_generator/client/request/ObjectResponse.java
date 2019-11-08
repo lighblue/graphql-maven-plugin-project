@@ -6,13 +6,17 @@ package com.graphql_java_generator.client.request;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.Marker;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.Marker;
 
 import com.graphql_java_generator.client.GraphqlUtils;
 import com.graphql_java_generator.client.QueryExecutor;
 import com.graphql_java_generator.client.response.GraphQLRequestPreparationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Marker;
+
 
 /**
  * This class describes what response is expected from the GraphQL server. That is: the fields and sub-objects that the
@@ -52,7 +56,7 @@ import com.graphql_java_generator.client.response.GraphQLRequestPreparationExcep
 public class ObjectResponse {
 
 	/** Logger for this class */
-	private static Logger logger = LogManager.getLogger();
+	private static Logger logger = LoggerFactory.getLogger(ObjectResponse.class);
 
 	static GraphqlUtils graphqlUtils = new GraphqlUtils();
 

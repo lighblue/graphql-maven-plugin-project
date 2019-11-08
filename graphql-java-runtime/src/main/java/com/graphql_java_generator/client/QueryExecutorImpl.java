@@ -15,8 +15,8 @@ import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,6 +25,11 @@ import com.graphql_java_generator.client.request.ObjectResponse;
 import com.graphql_java_generator.client.response.GraphQLExecutionException;
 import com.graphql_java_generator.client.response.GraphQLResponseParseException;
 import com.graphql_java_generator.client.response.JsonResponseWrapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Marker;
+import org.slf4j.MarkerFactory;
+
 
 /**
  * This class is the query executor : a generic class, reponsible for calling the GraphQL server, for query, mutation
@@ -35,8 +40,18 @@ import com.graphql_java_generator.client.response.JsonResponseWrapper;
  */
 public class QueryExecutorImpl implements QueryExecutor {
 
+	public static final Marker GRAPHQL_QUERY_MARKER = MarkerFactory.getMarker("GRAPHQL_QUERY");
+	public static final Marker GRAPHQL_MUTATION_MARKER = MarkerFactory.getMarker("GRAPHQL_MUTATION");
+	public static final Marker GRAPHQL_SUBSCRIPTION_MARKER = MarkerFactory.getMarker("GRAPHQL_SUBSCRIPTION");
+
+	static {
+		GRAPHQL_QUERY_MARKER.add(GRAPHQL_MARKER);
+		GRAPHQL_MUTATION_MARKER.add(GRAPHQL_MARKER);
+		GRAPHQL_SUBSCRIPTION_MARKER.add(GRAPHQL_MARKER);
+	}
+
 	/** Logger for this class */
-	private static Logger logger = LogManager.getLogger();
+	private static Logger logger = LoggerFactory.getLogger(QueryExecutorImpl.class);
 
 	/** The Jersey {@link Client}, used to execute the request toward the GraphQL server */
 	Client client;
