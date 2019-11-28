@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.graphql-java-generator</groupId>
 		<artifactId>graphql-maven-plugin-samples</artifactId>
-		<version>1.0.0-RC2-SNAPSHOT</version>
+		<version>1.0.0-RC3-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>graphql-maven-plugin-samples-StarWars-client</artifactId>
@@ -86,6 +86,13 @@
 							</properties>
 						</deployable>
 					</deployables>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!-- We don't want to spam the repository with test/sample artefacts -->
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
 				</configuration>
 			</plugin>
 		</plugins>
